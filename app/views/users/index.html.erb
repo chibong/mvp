@@ -1,0 +1,23 @@
+<p><%= link_to "Add a New User", '/users/new' %></p>
+
+<table>
+  <thead>
+    <tr>
+      <th></th>
+      <th><%= link_to "First Name", "/users?sortby=desc" %></th>
+      <th>First Name</th>
+    </tr>
+  </thead>
+  <tbody>
+  <% @users.each do |users| %>
+    <tr>
+      <td>
+        <%= link_to "Toast", "users/#{user.id}", method: 'delete' %>
+        <%= link_to "Edit", "users/#{user.id}/edit" %>
+      </td>
+      <td><%= link_to user.title, "/users/#{user.id}" %></td>
+      <td><%= user.year %></td>
+    </tr>
+  <% end %>
+  </tbody>
+</table>
