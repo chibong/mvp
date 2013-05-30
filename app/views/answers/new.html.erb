@@ -1,0 +1,27 @@
+<h1>New Feedback</h1>
+
+
+<%= form_tag(answers_url, method: 'post') do %>
+
+    <div>
+    <%= label_tag :question_id %><br />
+    <%= select_tag :question_id,
+                    options_from_collection_for_select(Question.all, :id, :summary) %>
+  </div>
+  <div>
+    <%= label_tag :number %><br />
+    <%= number_field_tag :number %>
+  </div>
+
+  <div>
+    <%= label_tag :text %><br />
+    <%= text_field_tag :text %>
+  </div>
+
+
+  <div>
+    <%= submit_tag "Add Feedback" %>
+  </div>
+
+<%= link_to 'Back to Questions', questions_url%>
+<% end %>

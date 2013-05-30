@@ -1,23 +1,30 @@
-<p><%= link_to "Add a New User", '/users/new' %></p>
+<h1>Users</h1>
+
+<p><%= link_to 'Add a New User', new_user_url %></p>
 
 <table>
   <thead>
     <tr>
+      <th>Name</th>
       <th></th>
-      <th><%= link_to "First Name", "/users?sortby=desc" %></th>
-      <th>First Name</th>
+      <th></th>
+      <th></th>
     </tr>
   </thead>
+
   <tbody>
-  <% @users.each do |users| %>
+  <% @users.each do |user| %>
     <tr>
-      <td>
-        <%= link_to "Toast", "users/#{user.id}", method: 'delete' %>
-        <%= link_to "Edit", "users/#{user.id}/edit" %>
-      </td>
-      <td><%= link_to user.title, "/users/#{user.id}" %></td>
-      <td><%= user.year %></td>
+      <td><%= user.name %></td>
+      <td><%= user.password %></td>
+      <td></td>
+      <td><%= link_to "Add Feedback", questions_url(user) %> |</td>
+      <td><%= link_to 'Show', user_url(user) %></td>
+      <td><%= link_to 'Edit', edit_user_url(user) %></td>
+      <td><%= link_to 'Destroy', user_url(user), method: 'delete', data: { confirm: "Do you really want to delete this user?" } %></td>
+
     </tr>
   <% end %>
   </tbody>
 </table>
+

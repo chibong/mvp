@@ -1,14 +1,29 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>MVP</title>
+  <title>Feedback App</title>
   <%= stylesheet_link_tag    "application", :media => "all" %>
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
 </head>
 <body>
 
-<%= yield %>
+  <header>
+    <h1>Your Feedback Activity</h1>
+    <nav>
+
+      <% if session["user_id"].present? %>
+        Hello, <%= User.find_by_id(session["user_id"]).name %>!
+        <%= link_to "Sign Out", "/logout" %>
+      <% else %>
+        <%= link_to "Sign Up", '/users/new' %>
+        <%= link_to "Login", '/login' %>
+      <% end %>
+
+    </nav>
+  </header>
+
+  <%= yield %>
 
 </body>
 </html>

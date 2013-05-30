@@ -1,0 +1,21 @@
+<h1>Editing Answer #<%= @answer.id %></h1>
+
+
+<%= form_tag(answer_url(@answer), method: 'put') do %>
+
+  <div>
+    <%= label_tag :[rnumber %><br />
+    <%= number_field_tag :[rnumber, @answer.[rnumber %>
+  </div>
+
+  <div>
+    <%= label_tag :text %><br />
+    <%= text_field_tag :text, @answer.text %>
+  </div>
+
+  
+  <div>
+    <%= submit_tag "Update Answer" %>
+  </div>
+
+<% end %>

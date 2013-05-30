@@ -1,0 +1,21 @@
+<h1>Editing User #<%= @user.id %></h1>
+
+
+<%= form_tag(user_url(@user), method: 'put') do %>
+
+  <div>
+    <%= label_tag :name %><br />
+    <%= text_field_tag :name, @user.name %>
+  </div>
+
+  <div>
+    <%= label_tag :password %><br />
+    <%= text_field_tag :password, @user.password %>
+  </div>
+
+  
+  <div>
+    <%= submit_tag "Update User" %>
+  </div>
+
+<% end %>

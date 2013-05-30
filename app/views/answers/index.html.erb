@@ -1,0 +1,33 @@
+<h1>Answers</h1>
+
+<p><%= link_to 'Add a New Answer', new_answer_url %></p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Rating</th>
+      <th>Text</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+  <% @answers.each do |answer| %>
+    <tr>
+      <td><%= answer.number %></td>
+      <td><%= answer.text %></td>
+      <td><%= answer.created_at %></td>
+
+      <td><%= link_to 'Show', answer_url(answer) %></td>
+      <td><%= link_to 'Edit', edit_answer_url(answer) %></td>
+      <td><%= link_to 'Destroy', answer_url(answer), method: 'delete', data: { confirm: "Do you really want to delete this answer?" } %></td>
+
+    </tr>
+  <% end %>
+  </tbody>
+</table>
+
+<%= link_to 'Back to Questions', questions_url%>
+

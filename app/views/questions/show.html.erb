@@ -1,0 +1,31 @@
+<h1>Questions </h1>
+
+<p>
+  <b>Summary:</b>
+  <%= @question.summary %>
+</p>
+
+  <br>
+  <table>
+  <thead>
+    <tr>
+      <th>Time</th>
+      <th></th>
+      <th></th>
+      <th>Rating</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+       <% @question.answers.each do |answer| %>
+      <tr>
+      <td><%= answer.created_at.strftime("%b %d")%></td>
+      <td></td>
+      <td></td>
+      <td><%= answer.number %></td>
+      </tr>
+      <% end %>
+
+  </tbody>
+</table>
+

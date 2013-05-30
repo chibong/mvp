@@ -1,0 +1,26 @@
+
+<p>
+  <b><h1>Name:</h1></b>
+  <%= @user.name %>
+</p>
+
+<p>
+  <b>Questions:</b>
+   <% @user.questions do |question| %>
+    <tr>
+
+      <td><%= question.summary %></td>
+      <td></td>
+      <td><%= question.answers.average(:number) %></td>
+
+
+      <td><%= link_to 'Show', question_url(question) %></td>
+      <td><%= link_to 'Edit ', edit_question_url(question) %></td>
+      <td><%= link_to 'Destroy', question_url(question), method: 'delete', data: { confirm: "Do you really want to delete this question?" } %></td>
+    </tr>
+  <% end %>
+
+  <!-- need to add questions to the user first, link those up -->
+
+
+
