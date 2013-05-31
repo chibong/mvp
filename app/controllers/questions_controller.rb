@@ -2,7 +2,11 @@ class QuestionsController < ApplicationController
 
   def index
     @user = User.find_by_id(params[:id])
-    @user.questions = Question.all
+    @userqs = @user.questions
+
+    # if @user.id != sesssion["user_id"]
+    #   redirect_to "/", :notice => "Sorry, you cant see this"
+    # end
   end
 
   def show
@@ -11,13 +15,13 @@ class QuestionsController < ApplicationController
 
   def new
     @user = User.find_by_id(params[:id])
-    @user.question = Question.new
+    # @user.question = Question.new
   end
 
   def create
-    @user.question = Question.new
-    @user.question.summary = params[:summary]
-    if @user.question.save
+    @question = Question.new
+    @question.summary = params[:summary]
+    if @question.save
       redirect_to questions_url
     else
       render 'new'

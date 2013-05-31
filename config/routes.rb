@@ -1,8 +1,5 @@
 MVP::Application.routes.draw do
 
-
-
-  get '/', controller: 'users', action:'home'
   get '/login', controller: 'sessions', action: 'new'
   post '/sessions', controller: 'sessions', action: 'create'
   get "/logout", controller: 'sessions', action: 'destroy'
@@ -23,15 +20,18 @@ MVP::Application.routes.draw do
   # DELETE
   delete '/answers/:id', controller: 'answers', action: 'destroy'
   #------------------------------
+# Routes for the User resource:
+  # HOME
+  get '/', controller: 'users', action:'home'
 
-
-
+  # CREATE
   get '/users/new', controller: 'users', action: 'new', as: 'new_user'
-  post '/users/', controller: 'users', action: 'create'
+  post '/users', controller: 'users', action: 'create'
 
   # READ
   get '/users', controller: 'users', action: 'index', as: 'users'
-  get '/users/:id', controller: 'users', action: 'show', as: 'user'
+  # get '/users/:id', controller: 'users', action: 'show', as: 'user'
+  get '/users', controller: 'users', action: 'show', as: 'user'
 
   # UPDATE
   get '/users/:id/edit', controller: 'users', action: 'edit', as: 'edit_user'
@@ -40,12 +40,13 @@ MVP::Application.routes.draw do
   # DELETE
   delete '/users/:id', controller: 'users', action: 'destroy'
 
+
   get 'users/:id/questions/new', controller: 'questions', action: 'new', as:'new_question'
-  post 'users/:id/questions/:id', controller: 'questions', action: 'create'
+  post 'users/:id/questions', controller: 'questions', action: 'create'
 
   get 'users/:id/questions', controller: 'questions', action: 'index', as: 'questions'
 # need to figure out how to send it a user and a question id
-  get 'users/:id/questions/:id', controller: 'questions', action: 'show', as: 'question'
+  get 'users/:user_id/questions/:id', controller: 'questions', action: 'show', as: 'question'
 
 
   # UPDATE

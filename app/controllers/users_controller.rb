@@ -12,7 +12,6 @@ class UsersController < ApplicationController
     @user = User.new
   end
 
-
   def create
     @user = User.new
     @user.name = params[:name]
@@ -42,13 +41,14 @@ class UsersController < ApplicationController
     end
   end
 
+  def home
+    @users = User.all
+  end
+
   def destroy
     @user = User.find_by_id(params[:id])
     @user.destroy
     redirect_to users_url
   end
-
-  def home
-    @users = User.all
-  end
 end
+

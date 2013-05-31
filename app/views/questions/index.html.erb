@@ -1,6 +1,6 @@
 <h1>Questions</h1>
 
-<p><%= link_to 'Add a New Question', new_question_url( @user.id ) %></p>
+<p><%= link_to 'Add a New Question', new_question_url %></p>
 
 <table>
   <thead>
@@ -12,7 +12,7 @@
   </thead>
 
   <tbody>
-  <% @user.questions.each do |question| %>
+  <% @userqs.each do |question| %>
     <tr>
 
       <td><%= question.summary %></td>

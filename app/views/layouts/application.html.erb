@@ -1,29 +1,56 @@
 <!DOCTYPE html>
+<%= stylesheet_link_tag "bootstrap.min.css"%>
 <html>
 <head>
   <title>Feedback App</title>
-  <%= stylesheet_link_tag    "application", :media => "all" %>
+
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
+
 </head>
 <body>
 
-  <header>
-    <h1>Your Feedback Activity</h1>
-    <nav>
+   <nav>
+      <%= link_to "Home", '/' %> |
+      <%= link_to "Give Feedback", '/users' %> |
 
-      <% if session["user_id"].present? %>
+       <% if session["user_id"].present? %>
         Hello, <%= User.find_by_id(session["user_id"]).name %>!
         <%= link_to "Sign Out", "/logout" %>
       <% else %>
         <%= link_to "Sign Up", '/users/new' %>
         <%= link_to "Login", '/login' %>
       <% end %>
+</nav>
+ <!--  <div class="navbar navbar-fixed-top">
+  <div class="navbar-inner">
+    <div class="container">
+      <a class="brand" href="/">Feed4ward</a>
+      <div class="navbar-content">
 
-    </nav>
+        <ul class="nav ">
+          <li>
+            <a href="/">Home</a>
+          </li>
+          <li>
+            <a href="/login">Login</a>
+          </li>
+          <li>
+            <a href="/users/new">New User</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div> -->
+
+
+
+
   </header>
 
-  <%= yield %>
-
+<div class="notice"><%= notice %></div>
+ <%= yield %>
 </body>
 </html>
+
