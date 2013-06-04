@@ -2,31 +2,31 @@
 
 <p><%= link_to 'Add a New Question', new_question_url %></p>
 
-<table>
-  <thead>
-    <tr>
-      <th>Question</th>
-      <th></th>
-      <th>Average Answer</th>
-      <tbody>
-      <% @user.questions.each do |question| %>
-      <tr>
+  <% if @user.questions.present? %>
+    <table>
+      <thead>
+        <tr>
+          <th>Question</th>
+          <th></th>
+          <th>Average Answer</th>
+          <tbody>
+          <% @user.questions.each do |question| %>
+          <tr>
 
-      <td><%= question.summary %></td>
-      <td></td>
-      <td><%= link_to 'Add Feedback', answers_url(question) %></td>
-      <td><%= link_to 'Show', question_url(question) %></td>
-      <td><%= link_to 'Edit ', edit_question_url(question) %></td>
-      <td><%= link_to 'Destroy', question_url(question), method: 'delete', data: { confirm: "Do you really want to delete this question?" } %></td>
-    </tr>
+          <td><%= question.summary %></td>
+          <!-- uncomment this out for the person giving feedback<td><#%= #link_to 'Add Feedback', answers_url(question) %></td>  -->
+          <td><%= link_to 'Show', question_url(@user, question)%></td>
+          <td><%= link_to 'Edit ', edit_question_url(@user, question) %></td>
+          <td><%= link_to 'Destroy', question_url(@user, question), method: 'delete', data: { confirm: "Do you really want to delete this question?" } %></td>
+        </tr>
+          <% end %>
+      </tbody>
+        </tr>
+       </thead>
+    </table>
+  <% else %>
+      <td>Get started by setting up some feedback questions!</td>
   <% end %>
-  </tbody>
-
-
-    </tr>
-  </thead>
-
-</table>
 
 
 

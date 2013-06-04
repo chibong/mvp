@@ -1,4 +1,3 @@
-User.destroy_all
 
 data = [{name: "Eric Chang", password: "password"}]
 

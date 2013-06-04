@@ -1,8 +1,10 @@
 class QuestionsController < ApplicationController
 
   def index
+      @question = Question.new
       @questions = Question.all
-      @user = User.find_by_id(params[:id])
+      @user = User.find_by_id(params[:user_id])
+
       # @userqs = @user.questions
 
       # if @user.id != sesssion["user_id"]
@@ -11,17 +13,19 @@ class QuestionsController < ApplicationController
   end
 
   def show
+    @user = User.find_by_id(params[:user_id])
     @question = Question.find_by_id(params[:id])
   end
 
   def new
-    @user = User.find_by_id(params[:id])
+    @user = User.find_by_id(params[:user_id])
     @question = Question.new
   end
 
   def create
     @question = Question.new
-    @question.user_id = params[:user_id]
+    @user = User.find_by_id(params[:user_id])
+    @question.user_id = @user.id
     @question.summary = params[:summary]
     if @question.save
       redirect_to questions_url
@@ -29,8 +33,6 @@ class QuestionsController < ApplicationController
       render 'new'
      end
   end
-
-
 
   def edit
     @question = Question.find_by_id(params[:id])

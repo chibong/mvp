@@ -40,6 +40,7 @@ MVP::Application.routes.draw do
   # DELETE
   delete '/users/:id', controller: 'users', action: 'destroy'
 
+  #QUESTIONS SECTION
 
   get 'users/:user_id/questions/new', controller: 'questions', action: 'new', as:'new_question'
   post 'users/:user_id/questions', controller: 'questions', action: 'create'
@@ -59,7 +60,7 @@ MVP::Application.routes.draw do
 
 
 
-get '/reviews/new', controller: 'reviews', action: 'new', as: 'new_review'
+  get '/reviews/new', controller: 'reviews', action: 'new', as: 'new_review'
   post '/reviews', controller: 'reviews', action: 'create'
 
   # READ
