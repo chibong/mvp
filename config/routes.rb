@@ -22,15 +22,15 @@ MVP::Application.routes.draw do
   #------------------------------
 # Routes for the User resource:
   # HOME
-  get '/', controller: 'users', action:'home'
 
+  get '/', controller: 'users', action:'home'
   # CREATE
   get '/users/new', controller: 'users', action: 'new', as: 'new_user'
   post '/users', controller: 'users', action: 'create'
 
   # READ
   get '/users', controller: 'users', action: 'index', as: 'users'
-  # get '/users/:id', controller: 'users', action: 'show', as: 'user'
+  # when i add this it breaks get '/users/:id', controller: 'users', action: 'show', as: 'user'
   get '/users', controller: 'users', action: 'show', as: 'user'
 
   # UPDATE
@@ -41,22 +41,37 @@ MVP::Application.routes.draw do
   delete '/users/:id', controller: 'users', action: 'destroy'
 
 
-  get 'users/:id/questions/new', controller: 'questions', action: 'new', as:'new_question'
-  post 'users/:id/questions', controller: 'questions', action: 'create'
+  get 'users/:user_id/questions/new', controller: 'questions', action: 'new', as:'new_question'
+  post 'users/:user_id/questions', controller: 'questions', action: 'create'
 
-  get 'users/:id/questions', controller: 'questions', action: 'index', as: 'questions'
-# need to figure out how to send it a user and a question id
+  get 'users/:user_id/questions', controller: 'questions', action: 'index', as: 'questions'
+  # need to figure out how to send it a user and a question id
   get 'users/:user_id/questions/:id', controller: 'questions', action: 'show', as: 'question'
 
 
   # UPDATE
-  get 'users/:id/questions/:id/edit', controller: 'questions', action: 'edit', as: 'edit_question'
-  put 'users/:id/questions/:id', controller: 'questions', action: 'update'
+  get 'users/:user_id/questions/:id/edit', controller: 'questions', action: 'edit', as: 'edit_question'
+  put 'users/:user_id/questions/:id', controller: 'questions', action: 'update'
 
 
   # DELETE
-  delete '/questions/:id', controller: 'questions', action: 'destroy'
+  delete 'users/:user_id/questions/:id', controller: 'questions', action: 'destroy'
 
+
+
+get '/reviews/new', controller: 'reviews', action: 'new', as: 'new_review'
+  post '/reviews', controller: 'reviews', action: 'create'
+
+  # READ
+  get '/reviews', controller: 'reviews', action: 'index', as: 'reviews'
+  get '/reviews/:id', controller: 'reviews', action: 'show', as: 'review'
+
+  # UPDATE
+  get '/reviews/:id/edit', controller: 'reviews', action: 'edit', as: 'edit_review'
+  put '/reviews/:id', controller: 'reviews', action: 'update'
+
+  # DELETE
+  delete '/reviews/:id', controller: 'reviews', action: 'destroy'
 
 
 

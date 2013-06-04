@@ -8,16 +8,12 @@
       <th>Question</th>
       <th></th>
       <th>Average Answer</th>
-    </tr>
-  </thead>
-
-  <tbody>
-  <% @userqs.each do |question| %>
-    <tr>
+      <tbody>
+      <% @user.questions.each do |question| %>
+      <tr>
 
       <td><%= question.summary %></td>
       <td></td>
-      <td><%= question.answers.average(:number) %></td>
       <td><%= link_to 'Add Feedback', answers_url(question) %></td>
       <td><%= link_to 'Show', question_url(question) %></td>
       <td><%= link_to 'Edit ', edit_question_url(question) %></td>
@@ -25,7 +21,13 @@
     </tr>
   <% end %>
   </tbody>
+
+
+    </tr>
+  </thead>
+
 </table>
+
 
 
 
