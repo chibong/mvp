@@ -41,10 +41,9 @@ class QuestionsController < ApplicationController
   def update
     @question = Question.find_by_id(params[:id])
     @question.summary = params[:summary]
-    @question.rating = params[:rating]
-
+    @user = User.find_by_id(session["user_id"])
     if @question.save
-      redirect_to questions_url
+      redirect_to questions_url(@user)
     else
       render 'new'
     end

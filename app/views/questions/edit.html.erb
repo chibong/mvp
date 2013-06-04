@@ -1,4 +1,4 @@
-<h1>Editing question #<%= @question.id %></h1>
+<h1>Editing Your Question </h1>
 
 
 <%= form_tag(question_url(@question), method: 'put') do %>
@@ -6,11 +6,6 @@
   <div>
     <%= label_tag :summary %><br />
     <%= text_field_tag :summary, @question.summary %>
-  </div>
-
-  <div>
-    <%= label_tag :rating %><br />
-    <%= number_field_tag :rating, @question.rating %>
   </div>
 
 

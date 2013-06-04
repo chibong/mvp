@@ -10,7 +10,6 @@
     <div class="row main-features">
     <% if session["user_id"].present? %>
       <%= link_to "Get Feedback", questions_url( User.find_by_id(session["user_id"])) %>
-
     <% else %>
       <%= link_to "Get Feedback", '/users/new', class: "btn-label" %>
       <!-- the button class doesnt work, what is syntax to  -->
