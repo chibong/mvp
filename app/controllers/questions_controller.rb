@@ -4,12 +4,13 @@ class QuestionsController < ApplicationController
       @question = Question.new
       @questions = Question.all
       @user = User.find_by_id(params[:user_id])
+      @session_id=session["user_id"]
 
       # @userqs = @user.questions
 
-      # if @user.id != sesssion["user_id"]
+      # if @user.id != session["user_id"]
       #   redirect_to "/", :notice => "Sorry, you cant see this"
-      # end
+      #  end
   end
 
   def show

@@ -2,7 +2,7 @@
 
 <p><%= link_to 'Add a New Question', new_question_url %></p>
 
-  <% if @user.questions.present? %>
+  <% if @user.id==@session_id %>
     <table>
       <thead>
         <tr>
@@ -23,8 +23,27 @@
         </tr>
        </thead>
     </table>
+
   <% else %>
-      <td>Get started by setting up some feedback questions!</td>
+   <table>
+      <thead>
+        <tr>
+          <th>Question</th>
+          <tbody>
+          <% @user.questions.each do |question| %>
+          <tr>
+          <td><%= question.summary %></td>
+          <!-- uncomment this out for the person giving feedback<td><#%= #link_to 'Add Feedback', answers_url(question) %></td>  -->
+          <td><%= link_to 'Show', question_url(@user, question)%></td>
+
+
+          <% end %>
+      </tbody>
+        </tr>
+       </thead>
+    </table>
+
+
   <% end %>
 
 
