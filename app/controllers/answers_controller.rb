@@ -17,9 +17,12 @@ class AnswersController < ApplicationController
     @answer.question_id=params[:question_id]
     @answer.number = params[:number]
     @answer.text = params[:text]
-
+    @user = User.find_by_id(params[:user_id])
     if @answer.save
-        redirect_to questions_url
+        redirect_to questions_url, notice: "Answer recorded"
+         # redirect_to "/", :notice => "Sorry, you cant see this"
+        #need to add a notification that it posted correctly
+        # redirect_to "users/#{:user_id}/questions/#{:question_id}/answers"
       # if this doesnt work try going back to redirect_to answers_url
     else
       render 'new'

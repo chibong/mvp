@@ -20,7 +20,7 @@
       <td><%= answer.text %></td>
       <td><%= answer.created_at %></td>
 
-      <td><%= link_to 'Show', answer_url(answer) %></td>
+      <td><%= link_to 'Show', answer_url(answer.id) %></td> <!-- #fix this!! make it line up with the routes -->
       <td><%= link_to 'Edit', edit_answer_url(answer) %></td>
       <td><%= link_to 'Destroy', answer_url(answer), method: 'delete', data: { confirm: "Do you really want to delete this answer?" } %></td>
 

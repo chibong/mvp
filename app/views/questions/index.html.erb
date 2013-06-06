@@ -17,7 +17,6 @@
           <td><%= link_to 'Show', question_url(@user, question)%></td>
           <td><%= link_to 'Edit ', edit_question_url(@user, question) %></td>
           <td><%= link_to 'Destroy', question_url(@user, question), method: 'delete', data: { confirm: "Do you really want to delete this question?" } %></td>
-
           <% end %>
       </tbody>
         </tr>
@@ -29,24 +28,24 @@
       <thead>
         <tr>
           <th>Question</th>
+          <th></th>
           <tbody>
           <% @user.questions.each do |question| %>
           <tr>
           <td><%= question.summary %></td>
           <!-- uncomment this out for the person giving feedback<td><#%= #link_to 'Add Feedback', answers_url(question) %></td>  -->
-          <td><%= link_to 'Show', question_url(@user, question)%></td>
 
-
+          <td>
+              <%= form_tag("/users/#{@user.id}/questions/#{question.id}/answers", method: 'post') do %>
+              <%= select_tag :number, options_for_select(1..5) %>
+              <%= hidden_field_tag :question_id, question.id %> <!-- give the server hidden values  -->
+              <%= submit_tag %>
+            <% end %>
+          </td>
           <% end %>
       </tbody>
         </tr>
        </thead>
     </table>
 
-
-  <% end %>
-
-
-
-
-
+<% end %>

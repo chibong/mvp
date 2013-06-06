@@ -6,19 +6,20 @@ MVP::Application.routes.draw do
 
   # Routes for the Answer resource:
   # CREATE
-  get '/answers/new', controller: 'answers', action: 'new', as: 'new_answer'
-  post '/answers', controller: 'answers', action: 'create'
+  get 'users/:user_id/questions/:id/answers/new', controller: 'answers', action: 'new', as: 'new_answer'
+  post "users/:user_id/questions/:id/answers", controller: 'answers', action: 'create'
+  #for some reason its trying to post to answers, when I match these routes it works.
 
   # READ
-  get '/answers', controller: 'answers', action: 'index', as: 'answers'
-  get '/answers/:id', controller: 'answers', action: 'show', as: 'answer'
+  get 'users/:user_id/questions/:id/answers', controller: 'answers', action: 'index', as: 'answers'
+  get 'users/:user_id/questions/:id/answers/:answer_id', controller: 'answers', action: 'show', as: 'answer'
 
   # UPDATE
-  get '/answers/:id/edit', controller: 'answers', action: 'edit', as: 'edit_answer'
-  put '/answers/:id', controller: 'answers', action: 'update'
+  get 'users/:user_id/questions/:id/answers/:answer_id/edit', controller: 'answers', action: 'edit', as: 'edit_answer'
+  put 'users/:user_id/questions/:id/answers/:answer_id', controller: 'answers', action: 'update'
 
   # DELETE
-  delete '/answers/:id', controller: 'answers', action: 'destroy'
+  delete 'users/:user_id/questions/:id/answers/:answer_id', controller: 'answers', action: 'destroy'
   #------------------------------
 # Routes for the User resource:
   # HOME
@@ -59,20 +60,6 @@ MVP::Application.routes.draw do
   delete 'users/:user_id/questions/:id', controller: 'questions', action: 'destroy'
 
 
-
-  get '/reviews/new', controller: 'reviews', action: 'new', as: 'new_review'
-  post '/reviews', controller: 'reviews', action: 'create'
-
-  # READ
-  get '/reviews', controller: 'reviews', action: 'index', as: 'reviews'
-  get '/reviews/:id', controller: 'reviews', action: 'show', as: 'review'
-
-  # UPDATE
-  get '/reviews/:id/edit', controller: 'reviews', action: 'edit', as: 'edit_review'
-  put '/reviews/:id', controller: 'reviews', action: 'update'
-
-  # DELETE
-  delete '/reviews/:id', controller: 'reviews', action: 'destroy'
 
 
 
