@@ -21,7 +21,7 @@ class UsersController < ApplicationController
       session["user_id"] = @user.id
       redirect_to questions_url(@user)
     else
-      render 'new'
+      redirect_to "/users/new", notice: "User already registered."
     end
   end
 
