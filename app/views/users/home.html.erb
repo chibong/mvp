@@ -9,12 +9,12 @@
     <p></p>
     <div class="row main-features">
     <% if session["user_id"].present? %>
-      <span class="btn-label"><%= link_to "Manage Feedback", questions_url( User.find_by_id(session["user_id"])), class: "btn btn-info btn-large" %>
+      <span class="btn-label"><%= link_to "Manage Your Feedback", questions_url( User.find_by_id(session["user_id"])), class: "btn btn-info btn-large" %>
     <% else %>
-      <span class="btn-label"><%= link_to "Manage Feedback", '/users/new', class: "btn btn-info btn-large" %>
+      <span class="btn-label"><%= link_to "Start Getting Feedback", '/users/new', class: "btn btn-info btn-large" %>
       <!-- the button class doesnt work, what is syntax to  -->
     <% end %>
-    <a class="btn btn-info btn-large" href="/users"><span class="btn-label">Give Feedback</span></a>
+    <a class="btn btn-info btn-large" href="/users"><span class="btn-label">Give Others Feedback</span></a>
     </div>
   </div>
 </div>

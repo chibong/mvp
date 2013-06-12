@@ -3,7 +3,10 @@
 <html>
 <head>
   <title>Feedback App</title>
-
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
+  <script src="http://code.highcharts.com/highcharts.js"></script>
+  <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
+    <script type="text/javascript">
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
 
@@ -12,10 +15,9 @@
 
    <nav>
       <%= link_to "Home", '/' %> |
-      <%= link_to "Give Feedback", '/users' %> |
 
        <% if session["user_id"].present? %>
-        Hello, <%= User.find_by_id(session["user_id"]).name %>!
+        Hello, <%= User.find_by_id(session["user_id"]).name %>! |
         <%= link_to "Sign Out", "/logout" %>
       <% else %>
         <%= link_to "Sign Up", '/users/new' %> |
