@@ -31,7 +31,7 @@ class QuestionsController < ApplicationController
     if @question.save
       redirect_to questions_url
     else
-      render 'new'
+      redirect_to "/users/#{@user.id}/questions/new", notice: "Please enter a question or make sure it is unique"
      end
   end
 
