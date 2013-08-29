@@ -8,6 +8,12 @@ group :development, :test do
   # gem 'quiet_assets'
 end
 
+group :production do
+  # Assuming heroku, pg is needed
+  gem 'pg'
+end
+
+
 # Gems used only for assets and not required
 # in production environments by default.
 group :assets do
@@ -24,9 +30,6 @@ gem 'jquery-rails'
 
 # To use ActiveModel has_secure_password
 gem 'bcrypt-ruby', '~> 3.0.0'
-
-
-
 
 
 # To use Jbuilder templates for JSON
