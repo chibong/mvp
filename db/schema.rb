@@ -38,6 +38,11 @@ ActiveRecord::Schema.define(:version => 20130526144141) do
   add_index "sessions", ["session_id"], :name => "index_sessions_on_session_id"
   add_index "sessions", ["updated_at"], :name => "index_sessions_on_updated_at"
 
+  create_table "students", :force => true do |t|
+    t.string "firstname"
+    t.string "lastname"
+  end
+
   create_table "users", :force => true do |t|
     t.string   "password_digest"
     t.string   "name"
